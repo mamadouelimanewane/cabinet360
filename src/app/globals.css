@@ -1,26 +1,66 @@
 @import "tailwindcss";
 
+/*
+  Cabinet 360 — site produit.
+  Vert profond de la marque, orange du « 360 », neutres légèrement teintés
+  de vert. Le site est volontairement clair (lisibilité, impression).
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --green: #006b3f;
+  --green-deep: #0b3d2e;
+  --green-soft: #e4f1ea;
+  --orange: #f29400;
+  --orange-soft: #fdf0d8;
+  --ink: #17241f;
+  --ink-2: #4a5a53;
+  --ink-3: #7c8a84;
+  --rule: #d9e2dd;
+  --ground: #f6f8f6;
+  --paper: #ffffff;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-green: var(--green);
+  --color-green-deep: var(--green-deep);
+  --color-green-soft: var(--green-soft);
+  --color-orange: var(--orange);
+  --color-orange-soft: var(--orange-soft);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-rule: var(--rule);
+  --color-ground: var(--ground);
+  --color-paper: var(--paper);
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
+  --font-display: var(--font-bricolage), var(--font-manrope), system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html { scroll-behavior: smooth; }
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
 }
+
+h1, h2, h3, .display { font-family: var(--font-display); text-wrap: balance; letter-spacing: -0.01em; }
+
+.container-site { max-width: 1120px; margin-inline: auto; padding-inline: 1.25rem; }
+@media (min-width: 768px) { .container-site { padding-inline: 2rem; } }
+
+.eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); }
+
+.btn { display: inline-flex; align-items: center; gap: .5rem; border-radius: .75rem; padding: .8rem 1.25rem; font-weight: 700; font-size: .95rem; transition: transform .12s ease, background .15s ease, box-shadow .15s ease; }
+.btn:focus-visible { outline: 3px solid var(--orange); outline-offset: 2px; }
+.btn-primary { background: var(--green); color: #fff; box-shadow: 0 6px 18px -8px rgba(0,107,63,.6); }
+.btn-primary:hover { background: #05834f; transform: translateY(-1px); }
+.btn-ghost { background: transparent; color: var(--green-deep); border: 1.5px solid var(--rule); }
+.btn-ghost:hover { border-color: var(--green); background: var(--paper); }
+.btn-orange { background: var(--orange); color: #1a1200; }
+.btn-orange:hover { background: #ffa41c; }
+
+.card { background: var(--paper); border: 1px solid var(--rule); border-radius: 1.25rem; }
+
+.tabular { font-variant-numeric: tabular-nums; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } }
